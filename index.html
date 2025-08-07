@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copy CMD Command</title>
+  <style>
+    body {
+      font-family: Consolas, monospace;
+      background: #111;
+      color: #0f0;
+      padding: 40px;
+    }
+    .cmd-box {
+      background: #222;
+      padding: 15px;
+      border: 1px solid #0f0;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    button {
+      padding: 10px 20px;
+      background: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2aff2a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Click to Copy CMD Command</h2>
+
+  <div class="cmd-box" id="cmdText">
+powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iwr 'https://github.com/dev-dhairya/fakehackmenu/releases/download/v1.0/fakehackmenuv1.bat' -OutFile \"$env:USERPROFILE\Downloads\fakehackmenuv1.bat\""
+  </div>
+
+  <button onclick="copyCmd()">Copy</button>
+
+  <script>
+    function copyCmd() {
+      const cmd = document.getElementById("cmdText").innerText;
+      navigator.clipboard.writeText(cmd).then(() => {
+        alert("Command copied to clipboard!");
+      }, () => {
+        alert("Failed to copy.");
+      });
+    }
+  </script>
+
+</body>
+</html>
